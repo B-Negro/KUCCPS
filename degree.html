@@ -1,0 +1,752 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kenyan Courses Checker</title>
+  <style>
+   /* Body with dark to gold gradient background and light grey text */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+  url('/image/wes-hicks-4-EeTnaC1S4-unsplash.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+ background-position: center;
+  color: #d3d3d3;
+}
+a
+/* Form container: dark background with soft purple border and subtle glow */
+form {
+  max-width: 600px;
+  margin: auto;
+  background-color: rgb(79, 96, 133);
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #31abe4; /* Soft purple border */
+  box-shadow: 0 2px 6px rgba(13, 236, 5, 0.5); /* Soft purple glow */
+}
+
+/* Form group spacing */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Label styling: light grey text */
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: black;
+}
+
+/* Input fields and selects: dark background with soft purple border, light text */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  background-color: #333;
+  color: #d3d3d3;
+  border: 1px solid #b39ddb; /* Soft purple border */
+  border-radius: 4px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+select:focus {
+  border-color: #b39ddb;
+  box-shadow: 0 0 8px rgba(179, 157, 219, 0.6);
+  outline: none;
+}
+
+/* Button styling: neon teal background with glowing hover effect */
+button {
+  background-color: #00ffcc; /* Neon teal */
+  color: #000;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
+  text-shadow: 0 0 10px #00ffcc;
+}
+
+/* Note styling: small light grey text */
+.note {
+  font-size: 12px;
+  color: #d3d3d3;
+}
+
+/* Group title styling */
+.group-title {
+  font-weight: bold;
+  margin-top: 10px;
+  text-decoration:solid;
+  color: #1a7008;
+}
+
+/* Neon glow animation for grade and cutoff sections */
+@keyframes neonGlow {
+  0% {
+    box-shadow: 0 0 5px #27db03e1, 0 0 10px #f10909;
+  }
+  50% {
+    box-shadow: 0 0 15px #21ec07, 0 0 25px #be0515;
+  }
+  100% {
+    box-shadow: 0 0 5px #3ce212, 0 0 10px #ff0000;
+  }
+}
+
+/* Apply neon glow animation and soft purple border to grade and cutoff sections */
+#grade-inputs, #cutoff-section {
+  border: 2px solid #6e2aec; /* Soft purple border */
+  padding: 10px;
+  border-radius: 8px;
+  animation: neonGlow 2s infinite alternate;
+}
+
+/* Glowing effect on cutoff section labels on hover */
+#cutoff-section label {
+  border: 1px solid transparent;
+  padding: 2px;
+  transition: box-shadow 0.3s ease;
+}
+
+#cutoff-section label:hover {
+  box-shadow: 0 0 10px #00ffcc;
+}
+
+/* Additional styling for course cards (useful for results.html) */
+.course-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 5px;
+  margin: 10px 0;
+  box-shadow: 0 2px 6px rgba(61, 197, 7, 0.671);
+  transition: transform 0.2s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Spacing for the KUCCPS button */
+#kuccpsButton {
+  margin: 15px 0; /* Adds vertical spacing above and below the button */
+  display: block; /* Ensures the button takes full width and centers itself */
+}
+  </style>
+</head>
+<body>
+  <h2>Enter KCSE Grades and Cluster Cutoff Points</h2>
+  <form id="portal-form">
+    <div id="grades-section" class="form-group">
+      <h3>Enter KCSE Grades (Select for the subjects you have taken)</h3>
+      <div id="grade-inputs">
+               <!-- Group 1: Core Subjects -->
+               <div class="group">
+                <div class="group-title">Core Subjects</div>
+                <label for="english">English:</label>
+                <select id="english" name="english">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+      
+                <label for="kiswahili">Kiswahili:</label>
+                <select id="kiswahili" name="kiswahili">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+      
+                <label for="mathematics">Mathematics:</label>
+                <select id="mathematics" name="mathematics">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+              </div>
+      
+              <!-- Group 2: Sciences -->
+              <div class="group">
+                <div class="group-title">Sciences</div>
+                <label for="biology">Biology:</label>
+                <select id="biology" name="biology">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+      
+                <label for="chemistry">Chemistry:</label>
+                <select id="chemistry" name="chemistry">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+      
+                <label for="physics">Physics:</label>
+                <select id="physics" name="physics">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+              </div>
+      
+              <!-- Group 3: Humanities -->
+              <div class="group">
+                <div class="group-title">Humanities</div>
+                <label for="geography">Geography:</label>
+                <select id="geography" name="geography">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+      
+                <label for="history">History and Government:</label>
+                <select id="history" name="history">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+      
+                <label for="cre">Christian Religious Education (CRE):</label>
+                <select id="cre" name="cre">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+      
+                <label for="ire">Islamic Religious Education (IRE):</label>
+                <select id="ire" name="ire">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+      
+                <label for="hre">Hindu Religious Education (HRE):</label>
+                <select id="hre" name="hre">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+              </div>
+      
+              <!-- Group 4: Technical and Other Subjects -->
+              <div class="group">
+                <div class="group-title">Technical and Other Subjects</div>
+                <label for="agriculture">Agriculture:</label>
+                <select id="agriculture" name="agriculture">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+      
+                <label for="computer">Computer Studies:</label>
+                <select id="computer" name="computer">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+      
+                <label for="art">Art and Design:</label>
+                <select id="art" name="art">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+      
+                <label for="business">Business Studies:</label>
+                <select id="business" name="business">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+      
+                <label for="music">Music:</label>
+                <select id="music" name="music">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+              </div>
+      
+              <!-- Group 5: Technical Subjects -->
+              <div class="group">
+                <div class="group-title">Technical Subjects</div>
+                <label for="building">Building and Construction:</label>
+                <select id="building" name="building">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+        
+                <label for="electronics">Electricity and Electronics:</label>
+                <select id="electronics" name="electronics">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+        
+                <label for="woodwork">Woodwork:</label>
+                <select id="woodwork" name="woodwork">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+        
+                <label for="metalwork">Metalwork:</label>
+                <select id="metalwork" name="metalwork">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+                
+                <label for="HomeScience">HomeScience:</label>
+                <select id="HomeScience" name="HomeScience">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+      
+                  
+                <label for="French">French:</label>
+                <select id="French" name="French">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+                
+                <label for="Germany">Germany:</label>
+                <select id="Germany" name="Germany">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+      
+                <label for="Aviation">Aviation:</label>
+                <select id="Aviation" name="Aviation">
+                  <option value="">Select Grade</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C+">C+</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D+">D+</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="E">E</option>
+                </select>
+        </div>
+      </div>
+      <!-- New button to redirect to KUCCPS portal with spacing -->
+      <button type="button" id="kuccpsButton" onclick="redirectToKuccps()">Click here to Check KUCCPS Cutoff Points</button>
+    </div>
+<!-- Video Section -->
+<div id="video-section" class="form-group">
+  <h3>Watch This Guide on how to get your cut off  points </h3>
+  <video width="50%" controls>
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+
+
+    <div id="cutoff-section" class="form-group">
+      <h3>Enter Cluster Cutoff Points</h3>
+      <div class="container">
+        <label for="cluster1">Cluster 1 - Law:</label>
+        <input type="number" id="cluster1" name="cluster1" step="0.0001" placeholder="Enter points for Law" required />
+        <label for="cluster2">Cluster 2 - Business, Hospitality & Related:</label>
+        <input type="number" id="cluster2" name="cluster2" step="0.0001" placeholder="Enter points for Business" required />
+        <label for="cluster3">Cluster 3 - Social Sciences, Media, Fine Arts & Related:</label>
+        <input type="number" id="cluster3" name="cluster3" step="0.0001" placeholder="Enter points for Social Sciences" required />
+        <label for="cluster4">Cluster 4 - Geosciences & Related:</label>
+        <input type="number" id="cluster4" name="cluster4" step="0.0001" placeholder="Enter points for Geosciences" required />
+        <label for="cluster5">Cluster 5 - Engineering & Related:</label>
+        <input type="number" id="cluster5" name="cluster5" step="0.0001" placeholder="Enter points for Engineering" required />
+        <label for="cluster6">Cluster 6 - Architecture & Related:</label>
+        <input type="number" id="cluster6" name="cluster6" step="0.0001" placeholder="Enter points for Architecture" required />
+        <label for="cluster7">Cluster 7 - Computing, IT & Related:</label>
+        <input type="number" id="cluster7" name="cluster7" step="0.0001" placeholder="Enter points for Computing" required />
+        <label for="cluster8">Cluster 8 - Agribusiness & Related:</label>
+        <input type="number" id="cluster8" name="cluster8" step="0.0001" placeholder="Enter points for Agribusiness" required />
+        <label for="cluster9">Cluster 9 - General Sciences & Related:</label>
+        <input type="number" id="cluster9" name="cluster9" step="0.0001" placeholder="Enter points for General Sciences" required />
+        <label for="cluster10">Cluster 10 - Actuarial Science & Related:</label>
+        <input type="number" id="cluster10" name="cluster10" step="0.0001" placeholder="Enter points for Actuarial Science" required />
+        <label for="cluster11">Cluster 11 - Interior Design & Related:</label>
+        <input type="number" id="cluster11" name="cluster11" step="0.0001" placeholder="Enter points for Interior Design" required />
+        <label for="cluster12">Cluster 12 - Sports Science & Related:</label>
+        <input type="number" id="cluster12" name="cluster12" step="0.0001" placeholder="Enter points for Sports Science" required />
+        <label for="cluster13">Cluster 13 - Medicine, Health & Related:</label>
+        <input type="number" id="cluster13" name="cluster13" step="0.0001" placeholder="Enter points for Medicine" required />
+        <label for="cluster14">Cluster 14 - History & Archeology:</label>
+        <input type="number" id="cluster14" name="cluster14" step="0.0001" placeholder="Enter points for History & Archeology" required />
+        <label for="cluster15">Cluster 15 - Environmental Science & Related:</label>
+        <input type="number" id="cluster15" name="cluster15" step="0.0001" placeholder="Enter points for Environmental Science" required />
+        <label for="cluster16">Cluster 16 - Geography and Related:</label>
+        <input type="number" id="cluster16" name="cluster16" step="0.0001" placeholder="Enter points for Geography and Related" required />
+        <label for="cluster17">Cluster 17 - French and German:</label>
+        <input type="number" id="cluster17" name="cluster17" step="0.0001" placeholder="Enter points for French and German" required />
+        <label for="cluster18">Cluster 18 - Music and Related:</label>
+        <input type="number" id="cluster18" name="cluster18" step="0.0001" placeholder="Enter points for Music and Related" required />
+        <label for="cluster19">Cluster 19 - Education and Related:</label>
+        <input type="number" id="cluster19" name="cluster19" step="0.0001" placeholder="Enter points for Education and Related" required />
+        <label for="cluster20">Cluster 20 - Religious Studies, Theology, Islamic Studies and Related:</label>
+        <input type="number" id="cluster20" name="cluster20" step="0.0001" placeholder="Enter points for Religious Studies and Related" required />
+      </div>
+    </div>
+    <button type="button" onclick="proceedToPayment()">Proceed to Payment</button>
+  </form>
+
+  <script>
+    // Function to redirect to KUCCPS student portal login page
+    window.redirectToKuccps = function () {
+      window.location.href = "https://students.kuccps.net/login/";
+    };
+
+    window.proceedToPayment = function () {
+      try {
+        // Define subjects with expected server keys
+        const subjects = [
+          { id: 'english', name: 'English' },
+          { id: 'kiswahili', name: 'Kiswahili' },
+          { id: 'mathematics', name: 'Mathematics' },
+          { id: 'biology', name: 'Biology' },
+          { id: 'chemistry', name: 'Chemistry' },
+          { id: 'physics', name: 'Physics' },
+          { id: 'geography', name: 'Geography' },
+          { id: 'history', name: 'History' },
+          { id: 'cre', name: 'CRE' },
+          { id: 'ire', name: 'IRE' },
+          { id: 'hre', name: 'HRE' },
+          { id: 'agriculture', name: 'Agriculture' },
+          { id: 'computer', name: 'Computer' },
+          { id: 'art', name: 'Art' },
+          { id: 'business', name: 'Business' },
+          { id: 'music', name: 'Music' },
+          { id: 'building', name: 'Building' },
+          { id: 'electronics', name: 'Electronics' },
+          { id: 'woodwork', name: 'Woodwork' },
+          { id: 'metalwork', name: 'Metalwork' },
+          { id: 'HomeScience', name: 'Home Science' }, // Standardized naming
+          { id: 'French', name: 'French' }, // Standardized naming
+          { id: 'Germany', name: 'German' }, // Standardized naming
+          { id: 'Aviation', name: 'Aviation' } // Standardized naming
+        ];
+
+        // Collect user grades
+        const userGrades = {};
+        subjects.forEach(subject => {
+          const grade = document.getElementById(subject.id)?.value.trim().toUpperCase();
+          if (grade) {
+            userGrades[subject.name] = grade;
+          }
+        });
+
+        // Validate number of subjects (7 to 9)
+        const subjectCount = Object.keys(userGrades).length;
+        if (subjectCount < 7 || subjectCount > 9) {
+          console.error(`Error: Selected ${subjectCount} subjects. Must be between 7 and 9.`);
+          alert("Please enter grades for 7 to 9 subjects.");
+          return;
+        }
+
+        // Collect cluster scores
+        const clusterScores = {};
+        document.querySelectorAll("#cutoff-section input").forEach(input => {
+          if (input.value) {
+            clusterScores[input.id.toLowerCase()] = parseFloat(input.value);
+          }
+        });
+
+        // Validate at least 5 clusters with score >= 5
+        const validClusters = Object.values(clusterScores).filter(score => score >= 5);
+        if (validClusters.length < 5) {
+          console.error(`Error: Only ${validClusters.length} clusters with score >= 5. Need at least 5.`);
+          alert("Please enter at least 5 cluster cutoff points (each >= 5) from the KUCCPS portal.");
+          return;
+        }
+
+        // Prepare data with courseType
+        const userData = {
+          courseType: 'degree',
+          grades: userGrades,
+          clusterScores: clusterScores,
+          paymentReference: 'pay_ref_placeholder' // Placeholder, updated in payment.js
+        };
+
+        // Log and save to localStorage
+        console.log("Formatted user data:", JSON.stringify(userData, null, 2));
+        localStorage.setItem("userData", JSON.stringify(userData));
+        // Save the courseType separately
+        localStorage.setItem('courseType', userData.courseType);
+        console.log("User data stored successfully:", userData);
+        console.log("Course type stored in localStorage:", userData.courseType);
+
+        alert("Validation successful! Redirecting to payment...");
+        window.location.href = "paystack.html";
+      } catch (error) {
+        console.error("Error in proceedToPayment:", error);
+        alert("An unexpected error occurred while processing your data.");
+      }
+    };
+</script>
+
+<footer style="text-align: center; padding: 7px; background-color: #1a1a1a; color: #fff; font-size: 14px;">
+    <p>Copyright © 2025 All rights reserved.</p>
+    <p>Designed by ENG. NEGRO</p>
+</footer>
+</body>
+</html>

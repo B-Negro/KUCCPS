@@ -1,0 +1,828 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>certificate courses</title>
+  <style>
+    /* Your existing CSS remains unchanged */
+    /* Body with dark to gold gradient background and light grey text */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: linear-gradient(135deg, #1a1a1a, #bfa76f);
+  background-size: cover;
+  color: #d3d3d3;
+}
+
+/* Form container: dark background with soft purple border and subtle glow */
+form {
+  max-width: 600px;
+  margin: auto;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #b39ddb; /* Soft purple border */
+  box-shadow: 0 2px 6px rgba(179, 157, 219, 0.5); /* Soft purple glow */
+}
+
+/* Form group spacing */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Label styling: light grey text */
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #d3d3d3;
+}
+
+/* Input fields and selects: dark background with soft purple border, light text */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select,
+input[type="checkbox"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  background-color: #333;
+  color: #d3d3d3;
+  border: 1px solid #b39ddb; /* Soft purple border */
+  border-radius: 4px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 10px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+select:focus,
+input[type="checkbox"]:focus {
+  border-color: #b39ddb;
+  box-shadow: 0 0 8px rgba(179, 157, 219, 0.6);
+  outline: none;
+}
+
+/* Button styling: neon teal background with glowing hover effect */
+button {
+  background-color: #00ffcc; /* Neon teal */
+  color: #000;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
+  text-shadow: 0 0 10px #00ffcc;
+}
+
+/* Note styling: small light grey text */
+.note {
+  font-size: 12px;
+  color: #d3d3d3;
+}
+
+/* Group title styling */
+.group-title {
+  font-weight: bold;
+  margin-top: 10px;
+  text-decoration: underline;
+  color: #d3d3d3;
+}
+
+/* Neon glow animation for grade and cutoff sections */
+@keyframes neonGlow {
+  0% {
+    box-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+  }
+  50% {
+    box-shadow: 0 0 15px #00ffcc, 0 0 25px #00ffcc;
+  }
+  100% {
+    box-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+  }
+}
+
+/* Apply neon glow animation and soft purple border to grade and cutoff sections */
+#grade-inputs, #cutoff-section {
+  border: 2px solid #b39ddb; /* Soft purple border */
+  padding: 10px;
+  border-radius: 8px;
+  animation: neonGlow 2s infinite alternate;
+}
+
+/* Glowing effect on cutoff section labels on hover */
+#cutoff-section label {
+  border: 1px solid transparent;
+  padding: 2px;
+  transition: box-shadow 0.3s ease;
+}
+
+#cutoff-section label:hover {
+  box-shadow: 0 0 10px #00ffcc;
+}
+
+/* Additional styling for course cards (useful for results.html) */
+.course-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 10px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-3px);
+}
+  </style>
+</head>
+<body>
+  <h2>Enter KCSE Grades</h2>
+  <form id="portal-form">
+    <div id="grades-section" class="form-group">
+      <h3>Enter KCSE Grades (Select for the subjects you have taken)</h3>
+      <div id="grade-inputs">
+        <label for="Meangrade">Mean Grade:</label>
+        <select id="Meangrade" name="Meangrade">
+          <option value="">Select Grade</option>
+          <option value="D+">D+</option>
+          <option value="D">D</option>
+          <option value="D-">D-</option>
+        </select>
+
+        <!-- Group 1: Core Subjects -->
+        <div class="group">
+          <div class="group-title">Core Subjects</div>
+          <label for="english">English:</label>
+          <select id="english" name="english">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="kiswahili">Kiswahili:</label>
+          <select id="kiswahili" name="kiswahili">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="mathematics">Mathematics:</label>
+          <select id="mathematics" name="mathematics">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+
+        <!-- Other subject groups remain unchanged -->
+        <!-- Group 2: Sciences -->
+        <div class="group">
+          <div class="group-title">Sciences</div>
+          <label for="biology">Biology:</label>
+          <select id="biology" name="biology">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="chemistry">Chemistry:</label>
+          <select id="chemistry" name="chemistry">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="physics">Physics:</label>
+          <select id="physics" name="physics">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+
+        <!-- Group 3: Humanities -->
+        <div class="group">
+          <div class="group-title">Humanities</div>
+          <label for="geography">Geography:</label>
+          <select id="geography" name="geography">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="history">History and Government:</label>
+          <select id="history" name="history">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="cre">Christian Religious Education (CRE):</label>
+          <select id="cre" name="cre">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="ire">Islamic Religious Education (IRE):</label>
+          <select id="ire" name="ire">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="hre">Hindu Religious Education (HRE):</label>
+          <select id="hre" name="hre">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+
+        <!-- Group 4: Technical and Other Subjects -->
+        <div class="group">
+          <div class="group-title">Technical and Other Subjects</div>
+          <label for="agriculture">Agriculture:</label>
+          <select id="agriculture" name="agriculture">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="computer">Computer Studies:</label>
+          <select id="computer" name="computer">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="art">Art and Design:</label>
+          <select id="art" name="art">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="business">Business Studies:</label>
+          <select id="business" name="business">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="music">Music:</label>
+          <select id="music" name="music">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+
+        <!-- Group 5: Technical Subjects -->
+        <div class="group">
+          <div class="group-title">Technical Subjects</div>
+          <label for="building">Building and Construction:</label>
+          <select id="building" name="building">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+  
+          <label for="electronics">Electricity and Electronics:</label>
+          <select id="electronics" name="electronics">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+  
+          <label for="woodwork">Woodwork:</label>
+          <select id="woodwork" name="woodwork">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+  
+          <label for="metalwork">Metalwork:</label>
+          <select id="metalwork" name="metalwork">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+          
+          <label for="HomeScience">HomeScience:</label>
+          <select id="HomeScience" name="HomeScience">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="French">French:</label>
+          <select id="French" name="French">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+          
+          <label for="Germany">Germany:</label>
+          <select id="Germany" name="Germany">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="Aviation">Aviation:</label>
+          <select id="Aviation" name="Aviation">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+
+        <!-- Counties Section -->
+        <div class="group">
+          <div class="group-title">SELECT COUNTY YOU PREFER TO SCHOOL IN 😉</div>
+          <div id="counties">
+            <label><input type="checkbox" name="county" value="Baringo"> Baringo</label>
+            <label><input type="checkbox" name="county" value="Bomet"> Bomet</label>
+            <label><input type="checkbox" name="county" value="Bungoma"> Bungoma</label>
+            <label><input type="checkbox" name="county" value="Busia"> Busia</label>
+            <label><input type="checkbox" name="county" value="Elgeyo-Marakwet"> Elgeyo-Marakwet</label>
+            <label><input type="checkbox" name="county" value="Embu"> Embu</label>
+            <label><input type="checkbox" name="county" value="Garissa"> Garissa</label>
+            <label><input type="checkbox" name="county" value="Homa Bay"> Homa Bay</label>
+            <label><input type="checkbox" name="county" value="Isiolo"> Isiolo</label>
+            <label><input type="checkbox" name="county" value="Kajiado"> Kajiado</label>
+            <label><input type="checkbox" name="county" value="Kakamega"> Kakamega</label>
+            <label><input type="checkbox" name="county" value="Kericho"> Kericho</label>
+            <label><input type="checkbox" name="county" value="Kiambu"> Kiambu</label>
+            <label><input type="checkbox" name="county" value="Kilifi"> Kilifi</label>
+            <label><input type="checkbox" name="county" value="Kirinyaga"> Kirinyaga</label>
+            <label><input type="checkbox" name="county" value="Kisii"> Kisii</label>
+            <label><input type="checkbox" name="county" value="Kisumu"> Kisumu</label>
+            <label><input type="checkbox" name="county" value="Kitui"> Kitui</label>
+            <label><input type="checkbox" name="county" value="Kwale"> Kwale</label>
+            <label><input type="checkbox" name="county" value="Laikipia"> Laikipia</label>
+            <label><input type="checkbox" name="county" value="Lamu"> Lamu</label>
+            <label><input type="checkbox" name="county" value="Machakos"> Machakos</label>
+            <label><input type="checkbox" name="county" value="Makueni"> Makueni</label>
+            <label><input type="checkbox" name="county" value="Mandera"> Mandera</label>
+            <label><input type="checkbox" name="county" value="Marsabit"> Marsabit</label>
+            <label><input type="checkbox" name="county" value="Meru"> Meru</label>
+            <label><input type="checkbox" name="county" value="Migori"> Migori</label>
+            <label><input type="checkbox" name="county" value="Mombasa"> Mombasa</label>
+            <label><input type="checkbox" name="county" value="Murang'a"> Murang'a</label>
+            <label><input type="checkbox" name="county" value="Nairobi"> Nairobi</label>
+            <label><input type="checkbox" name="county" value="Nakuru"> Nakuru</label>
+            <label><input type="checkbox" name="county" value="Nandi"> Nandi</label>
+            <label><input type="checkbox" name="county" value="Narok"> Narok</label>
+            <label><input type="checkbox" name="county" value="Nyamira"> Nyamira</label>
+            <label><input type="checkbox" name="county" value="Nyandarua"> Nyandarua</label>
+            <label><input type="checkbox" name="county" value="Nyeri"> Nyeri</label>
+            <label><input type="checkbox" name="county" value="Samburu"> Samburu</label>
+            <label><input type="checkbox" name="county" value="Siaya"> Siaya</label>
+            <label><input type="checkbox" name="county" value="Taita-Taveta"> Taita-Taveta</label>
+            <label><input type="checkbox" name="county" value="Tana River"> Tana River</label>
+            <label><input type="checkbox" name="county" value="Tharaka-Nithi"> Tharaka-Nithi</label>
+            <label><input type="checkbox" name="county" value="Trans Nzoia"> Trans Nzoia</label>
+            <label><input type="checkbox" name="county" value="Turkana"> Turkana</label>
+            <label><input type="checkbox" name="county" value="Uasin Gishu"> Uasin Gishu</label>
+            <label><input type="checkbox" name="county" value="Vihiga"> Vihiga</label>
+            <label><input type="checkbox" name="county" value="Wajir"> Wajir</label>
+            <label><input type="checkbox" name="county" value="West Pokot"> West Pokot</label>
+          </div>
+        </div>
+
+        <!-- Fields Section -->
+        <div class="group">
+          <div class="group-title">SELECT FIELD YOU PREFER 😉</div>
+          <div id="fields">
+            <label><input type="checkbox" name="field" value="ENGINEERING"> ENGINEERING</label>
+            <label><input type="checkbox" name="field" value="BUSINESS"> BUSINESS</label>
+            <label><input type="checkbox" name="field" value="TECHNICAL"> TECHNICAL</label>
+            <label><input type="checkbox" name="field" value="CARPENTRY"> CARPENTRY</label>
+            <label><input type="checkbox" name="field" value="HOSPITALITY"> HOSPITALITY</label>
+            <label><input type="checkbox" name="field" value="GOVERNMENT"> GOVERNMENT</label>
+            <label><input type="checkbox" name="field" value="ICT"> ICT</label>
+            <label><input type="checkbox" name="field" value="FASHION"> FASHION</label>
+            <label><input type="checkbox" name="field" value="SURVEY"> SURVEY</label>
+            <label><input type="checkbox" name="field" value="HOUSEKEEPING"> HOUSEKEEPING</label>
+            <label><input type="checkbox" name="field" value="LIBRARY"> LIBRARY</label>
+            <label><input type="checkbox" name="field" value="MARINE ENGINEERING"> MARINE ENGINEERING</label>
+            <label><input type="checkbox" name="field" value="TOURISM"> TOURISM</label>
+            <label><input type="checkbox" name="field" value="MEDICAL"> MEDICAL</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <button type="button" onclick="proceedToPayment()">Proceed to Payment</button>
+  </form>
+  <script>
+    // Define gradeMap in the frontend
+    const gradeMap = {
+      "A": 12,
+      "A-": 11,
+      "B+": 10,
+      "B": 9,
+      "B-": 8,
+      "C+": 7,
+      "C": 6,
+      "C-": 5,
+      "D+": 4,
+      "D": 3,
+      "D-": 2,
+      "E": 1
+    };
+
+    // Handle changes to update localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      const storedData = JSON.parse(localStorage.getItem('certificateData') || '{}');
+
+      // Load counties
+      if (storedData.selectedCounties) {
+        storedData.selectedCounties.forEach(county => {
+          const checkbox = document.querySelector(`input[name="county"][value="${county}"]`);
+          if (checkbox) checkbox.checked = true;
+        });
+      }
+
+      // Load fields
+      if (storedData.selectedFields) {
+        storedData.selectedFields.forEach(field => {
+          const checkbox = document.querySelector(`input[name="field"][value="${field}"]`);
+          if (checkbox) checkbox.checked = true;
+        });
+      }
+
+      // Load grades
+      if (storedData.grades) {
+        Object.entries(storedData.grades).forEach(([subject, grade]) => {
+          const select = document.getElementById(subject.toLowerCase());
+          if (select) select.value = grade;
+        });
+      }
+
+      // Load mean grade
+      if (storedData.meanGrade) {
+        document.getElementById('Meangrade').value = storedData.meanGrade;
+      }
+    });
+
+    // Update localStorage on input changes
+    document.querySelectorAll('input[name="county"], input[name="field"], select').forEach(element => {
+      element.addEventListener('change', updateLocalStorage);
+    });
+
+    function updateLocalStorage() {
+      const grades = {
+        English: document.getElementById('english').value || "",
+        Kiswahili: document.getElementById('kiswahili').value || "",
+        Mathematics: document.getElementById('mathematics').value || "" // Renamed to match standard
+      };
+
+      const selectedCounties = Array.from(document.querySelectorAll('input[name="county"]:checked'))
+        .map(cb => cb.value);
+
+      const selectedFields = Array.from(document.querySelectorAll('input[name="field"]:checked'))
+        .map(cb => cb.value);
+
+      const meanGrade = document.getElementById('Meangrade').value || "";
+
+      const userData = {
+        courseType: 'certificate',
+        grades,
+        selectedCounties,
+        selectedFields,
+        meanGrade,
+        paymentReference: 'pay_ref_placeholder' // Placeholder, updated in payment.js
+      };
+
+      localStorage.setItem('certificateData', JSON.stringify(userData));
+    }
+
+    window.proceedToPayment = function () {
+      try {
+        // Prepare data with courseType
+        const userData = {
+          courseType: 'certificate',
+          grades: {
+            English: document.getElementById('english').value || "",
+            Kiswahili: document.getElementById('kiswahili').value || "",
+            Mathematics: document.getElementById('mathematics').value || "" // Renamed to match standard
+          },
+          selectedCounties: [],
+          selectedFields: [],
+          meanGrade: '',
+          paymentReference: 'pay_ref_placeholder' // Placeholder, updated in payment.js
+        };
+
+        // Save the courseType early to ensure it's stored even if validation fails later
+        console.log("Saving courseType to localStorage:", userData.courseType);
+        localStorage.setItem('courseType', userData.courseType);
+
+        // Collect selected counties
+        userData.selectedCounties = Array.from(document.querySelectorAll('input[name="county"]:checked'))
+          .map(cb => cb.value);
+
+        // Collect selected fields
+        userData.selectedFields = Array.from(document.querySelectorAll('input[name="field"]:checked'))
+          .map(cb => cb.value);
+
+        // Collect mean grade
+        userData.meanGrade = document.getElementById('Meangrade').value || "";
+
+        // Validate required fields
+        if (!userData.meanGrade) {
+          console.error("Error: Mean grade not selected.");
+          alert("Please select your Mean Grade.");
+          return;
+        }
+        if (!userData.grades.English || !userData.grades.Kiswahili || !userData.grades.Mathematics) {
+          console.error("Error: Missing core subject grades.");
+          alert("Please select grades for English, Kiswahili, and Mathematics.");
+          return;
+        }
+        if (userData.selectedCounties.length === 0) {
+          console.error("Error: No counties selected.");
+          alert("Please select at least one county.");
+          return;
+        }
+        if (userData.selectedFields.length === 0) {
+          console.error("Error: No fields selected.");
+          alert("Please select at least one field.");
+          return;
+        }
+
+        // Log and save to localStorage
+        console.log("Formatted user data:", JSON.stringify(userData, null, 2));
+        localStorage.setItem('certificateData', JSON.stringify(userData));
+        console.log("User data stored successfully:", userData);
+        // Confirm courseType is still in localStorage
+        console.log("Current courseType in localStorage:", localStorage.getItem('courseType'));
+
+        alert("Validation successful! Redirecting to payment...");
+        window.location.href = "paystack.html";
+      } catch (error) {
+        console.error("Error in proceedToPayment:", error);
+        alert("An unexpected error occurred while processing your data.");
+      }
+    };
+</script>
+</body>
+</html>

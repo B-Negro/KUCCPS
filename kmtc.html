@@ -1,0 +1,599 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KMTC Courses Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: linear-gradient(135deg, #1a1a1a, #bfa76f);
+      background-size: cover;
+      color: #d3d3d3;
+    }
+    form {
+      max-width: 800px;
+      margin: auto;
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      border: 2px solid #b39ddb;
+      box-shadow: 0 2px 6px rgba(179, 157, 219, 0.5);
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #d3d3d3;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      background-color: #333;
+      color: #d3d3d3;
+      border: 1px solid #b39ddb;
+      border-radius: 4px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="email"]:focus,
+    select:focus {
+      border-color: #b39ddb;
+      box-shadow: 0 0 8px rgba(179, 157, 219, 0.6);
+      outline: none;
+    }
+    button {
+      background-color: #00ffcc;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      padding: 12px;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
+      text-shadow: 0 0 10px #00ffcc;
+    }
+    .group-title {
+      font-weight: bold;
+      margin-top: 10px;
+      text-decoration: underline;
+      color: #d3d3d3;
+    }
+    @keyframes neonGlow {
+      0% { box-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc; }
+      50% { box-shadow: 0 0 15px #00ffcc, 0 0 25px #00ffcc; }
+      100% { box-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc; }
+    }
+    #grade-inputs {
+      border: 2px solid #b39ddb;
+      padding: 10px;
+      border-radius: 8px;
+      animation: neonGlow 2s infinite alternate;
+    }
+  </style>
+</head>
+<body>
+  <h2>Enter KCSE Grades for KMTC Courses</h2>
+  <form id="kmtc-form">
+    <div id="grades-section" class="form-group">
+      <h3>Enter KCSE Grades (Select for the subjects you have taken)</h3>
+      <div id="grade-inputs">
+        <label for="Meangrade">Mean Grade:</label>
+        <select id="Meangrade" name="Meangrade">
+          <option value="">Select Grade</option>
+          <option value="A">A</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B">B</option>
+          <option value="B-">B-</option>
+          <option value="C+">C+</option>
+          <option value="C">C</option>
+          <option value="C-">C-</option>
+           </select>
+
+        <!-- Group 1: Core Subjects -->
+        <div class="group">
+          <div class="group-title">Core Subjects</div>
+          <label for="english">English:</label>
+          <select id="english" name="english">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="kiswahili">Kiswahili:</label>
+          <select id="kiswahili" name="kiswahili">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="mathematics">Mathematics:</label>
+          <select id="mathematics" name="mathematics">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+
+        <!-- Group 2: Sciences -->
+        <div class="group">
+          <div class="group-title">Sciences</div>
+          <label for="biology">Biology:</label>
+          <select id="biology" name="biology">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="chemistry">Chemistry:</label>
+          <select id="chemistry" name="chemistry">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="physics">Physics:</label>
+          <select id="physics" name="physics">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+
+        <!-- Group 3: Humanities -->
+        <div class="group">
+          <div class="group-title">Humanities</div>
+          <label for="geography">Geography:</label>
+          <select id="geography" name="geography">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="history">History and Government:</label>
+          <select id="history" name="history">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="cre">Christian Religious Education (CRE):</label>
+          <select id="cre" name="cre">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="ire">Islamic Religious Education (IRE):</label>
+          <select id="ire" name="ire">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="hre">Hindu Religious Education (HRE):</label>
+          <select id="hre" name="hre">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+
+        <!-- Group 4: Technical and Other Subjects -->
+        <div class="group">
+          <div class="group-title">Technical and Other Subjects</div>
+          <label for="agriculture">Agriculture:</label>
+          <select id="agriculture" name="agriculture">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="computer">Computer Studies:</label>
+          <select id="computer" name="computer">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="art">Art and Design:</label>
+          <select id="art" name="art">
+            <option value="">Select Grade</option>
+            <   <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="business">Business Studies:</label>
+          <select id="business" name="business">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="music">Music:</label>
+          <select id="music" name="music">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+
+        <!-- Group 5: Technical Subjects -->
+        <div class="group">
+          <div class="group-title">Technical Subjects</div>
+          <label for="building">Building and Construction:</label>
+          <select id="building" name="building">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="electronics">Electricity and Electronics:</label>
+          <select id="electronics" name="electronics">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="woodwork">Woodwork:</label>
+          <select id="woodwork" name="woodwork">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="metalwork">Metalwork:</label>
+          <select id="metalwork" name="metalwork">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="HomeScience">Home Science:</label>
+          <select id="HomeScience" name="HomeScience">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" onclick="proceedToPayment()">Proceed to Payment</button>
+  </form>
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KMTC Courses Checker</title>
+    <!-- Previous CSS remains unchanged -->
+  </head>
+  <body>
+    <!-- Previous form structure remains unchanged -->
+  
+    <script>
+      window.proceedToPayment = function () {
+        try {
+          // Define subjects with standardized names
+          const subjects = [
+            { id: 'english', name: 'English' },
+            { id: 'kiswahili', name: 'Kiswahili' },
+            { id: 'mathematics', name: 'Mathematics' },
+            { id: 'biology', name: 'Biology' },
+            { id: 'chemistry', name: 'Chemistry' },
+            { id: 'physics', name: 'Physics' },
+            { id: 'geography', name: 'Geography' },
+            { id: 'history', name: 'History and Government' },
+            { id: 'cre', name: 'CRE' },
+            { id: 'ire', name: 'IRE' },
+            { id: 'hre', name: 'HRE' },
+            { id: 'agriculture', name: 'Agriculture' },
+            { id: 'computer', name: 'Computer Studies' },
+            { id: 'art', name: 'Art and Design' },
+            { id: 'business', name: 'Business Studies' },
+            { id: 'music', name: 'Music' },
+            { id: 'building', name: 'Building and Construction' },
+            { id: 'electronics', name: 'Electricity and Electronics' },
+            { id: 'woodwork', name: 'Woodwork' },
+            { id: 'metalwork', name: 'Metalwork' },
+            { id: 'HomeScience', name: 'Home Science' }
+          ];
+
+          // Prepare data with courseType
+          const userData = {
+            courseType: 'kmtc',
+            grades: {},
+            meanGrade: '',
+            paymentReference: 'pay_ref_placeholder' // Placeholder, updated in payment.js
+          };
+
+          // Save the courseType early to ensure it's stored even if validation fails later
+          console.log("Saving courseType to localStorage:", userData.courseType);
+          localStorage.setItem('courseType', userData.courseType);
+
+          // Collect mean grade
+          const meanGrade = document.getElementById('Meangrade')?.value.trim().toUpperCase();
+          if (!meanGrade) {
+            console.error("Error: Mean grade not selected.");
+            alert("Please select your mean grade.");
+            return;
+          }
+
+          // Validate mean grade is C- or above
+          const validMeanGrades = ['A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-'];
+          if (!validMeanGrades.includes(meanGrade)) {
+            console.error(`Error: Invalid mean grade '${meanGrade}' for KMTC courses.`);
+            alert("KMTC requires a minimum mean grade of C-.");
+            return;
+          }
+
+          // Collect user grades
+          const userGrades = {};
+          subjects.forEach(subject => {
+            const grade = document.getElementById(subject.id)?.value.trim().toUpperCase();
+            if (grade) {
+              userGrades[subject.name] = grade;
+            }
+          });
+
+          // Validate number of subjects (7 to 9)
+          const selectedSubjectsCount = Object.keys(userGrades).length;
+          if (selectedSubjectsCount < 7 || selectedSubjectsCount > 9) {
+            console.error(`Error: Selected ${selectedSubjectsCount} subjects. Must be between 7 and 9.`);
+            alert("Please select between 7 and 9 subjects.");
+            return;
+          }
+
+          // Update userData with collected data
+          userData.meanGrade = meanGrade;
+          userData.grades = userGrades;
+
+          // Log and save to localStorage
+          console.log("Formatted user data:", JSON.stringify(userData, null, 2));
+          localStorage.setItem("kmtcData", JSON.stringify(userData));
+          console.log("User data stored successfully:", userData);
+          // Confirm courseType is still in localStorage
+          console.log("Current courseType in localStorage:", localStorage.getItem('courseType'));
+
+          alert("Validation successful! Redirecting to payment...");
+          window.location.href = "paystack.html";
+        } catch (error) {
+          console.error("Error in proceedToPayment:", error);
+          alert("An unexpected error occurred while processing your data.");
+        }
+      };
+</script>
+
+<footer style="text-align: center; padding: 7px; background-color: #1a1a1a; color: #fff; font-size: 14px;">
+    <p>Copyright © 2025 All rights reserved.</p>
+    <p>Designed by ENG. NEGRO</p>
+</footer>
+</body>
+</html>

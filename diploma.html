@@ -1,0 +1,914 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kenyan Courses Checker</title>
+  
+  /*style>
+    /* Body with dark to gold gradient background and light grey text */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: linear-gradient(135deg, #1a1a1a, #bfa76f);
+      background-size: cover;
+      color: #d3d3d3;
+    }
+
+    /* Form container: dark background with soft purple border and subtle glow */
+    form {
+      max-width: 800px; /* Increased width to accommodate counties */
+      margin: auto;
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      border: 2px solid #b39ddb; /* Soft purple border */
+      box-shadow: 0 2px 6px rgba(179, 157, 219, 0.5); /* Soft purple glow */
+    }
+
+    /* Form group spacing */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    /* Label styling: light grey text */
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #d3d3d3;
+    }
+
+    /* Input fields and selects: dark background with soft purple border, light text */
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      background-color: #333;
+      color: #d3d3d3;
+      border: 1px solid #b39ddb; /* Soft purple border */
+      border-radius: 4px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="email"]:focus,
+    select:focus {
+      border-color: #b39ddb;
+      box-shadow: 0 0 8px rgba(179, 157, 219, 0.6);
+      outline: none;
+    }
+
+    /* Checkbox styling */
+    input[type="checkbox"] {
+      margin-right: 5px;
+      accent-color: #00ffcc; /* Neon teal for checkbox */
+    }
+
+    /* Counties grid */
+    .counties-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      padding: 10px;
+      border: 2px solid #b39ddb;
+      border-radius: 8px;
+      background-color: #222;
+    }
+
+    .county-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .county-item label {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    /* Button styling: neon teal background with glowing hover effect */
+    button {
+      background-color: #00ffcc; /* Neon teal */
+      color: #000;
+      border: none;
+      cursor: pointer;
+      padding: 12px;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
+      text-shadow: 0 0 10px #00ffcc;
+    }
+
+    /* Note styling: small light grey text */
+    .note {
+      font-size: 12px;
+      color: #d3d3d3;
+    }
+
+    /* Group title styling */
+    .group-title {
+      font-weight: bold;
+      margin-top: 10px;
+      text-decoration: underline;
+      color: #d3d3d3;
+    }
+
+    /* Neon glow animation for grade and cutoff sections */
+    @keyframes neonGlow {
+      0% {
+        box-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+      }
+      50% {
+        box-shadow: 0 0 15px #00ffcc, 0 0 25px #00ffcc;
+      }
+      100% {
+        box-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+      }
+    }
+
+    /* Apply neon glow animation and soft purple border to grade and counties sections */
+    #grade-inputs, #counties-section {
+      border: 2px solid #b39ddb; /* Soft purple border */
+      padding: 10px;
+      border-radius: 8px;
+      animation: neonGlow 2s infinite alternate;
+    }
+
+    /* Glowing effect on counties section labels on hover */
+    #counties-section label:hover {
+      text-shadow: 0 0 5px #00ffcc;
+    }
+
+    /* Additional styling for course cards (useful for results.html) */
+    .course-card {
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 10px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .course-card:hover {
+      transform: translateY(-3px);
+    }
+  </style>*/
+</head>
+<body>
+  <h2>Enter KCSE Grades for Diploma</h2>
+  <form id="portal-form">
+    <div id="grades-section" class="form-group">
+      <h3>Enter KCSE Grades (Select for the subjects you have taken)</h3>
+      <div id="grade-inputs">
+        <label for="Meangrade">Mean Grade:</label>
+        <select id="Meangrade" name="Meangrade">
+          <option value="">Select Grade</option>
+          <option value="A">A</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B">B</option>
+          <option value="B-">B-</option>
+          <option value="C+">C+</option>
+          <option value="C">C</option>
+          <option value="C-">C-</option>
+        
+        </select>
+
+        <!-- Group 1: Core Subjects -->
+        <div class="group">
+          <div class="group-title">Core Subjects</div>
+          <label for="english">English:</label>
+          <select id="english" name="english">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="kiswahili">Kiswahili:</label>
+          <select id="kiswahili" name="kiswahili">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="mathematics">Mathematics:</label>
+          <select id="mathematics" name="mathematics">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+
+        <!-- Group 2: Sciences -->
+        <div class="group">
+          <div class="group-title">Sciences</div>
+          <label for="biology">Biology:</label>
+          <select id="biology" name="biology">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="chemistry">Chemistry:</label>
+          <select id="chemistry" name="chemistry">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="physics">Physics:</label>
+          <select id="physics" name="physics">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+
+        <!-- Group 3: Humanities -->
+        <div class="group">
+          <div class="group-title">Humanities</div>
+          <label for="geography">Geography:</label>
+          <select id="geography" name="geography">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="history">History and Government:</label>
+          <select id="history" name="history">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="cre">Christian Religious Education (CRE):</label>
+          <select id="cre" name="cre">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="ire">Islamic Religious Education (IRE):</label>
+          <select id="ire" name="ire">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="hre">Hindu Religious Education (HRE):</label>
+          <select id="hre" name="hre">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+
+        <!-- Group 4: Technical and Other Subjects -->
+        <div class="group">
+          <div class="group-title">Technical and Other Subjects</div>
+          <label for="agriculture">Agriculture:</label>
+          <select id="agriculture" name="agriculture">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="computer">Computer Studies:</label>
+          <select id="computer" name="computer">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="art">Art and Design:</label>
+          <select id="art" name="art">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="business">Business Studies:</label>
+          <select id="business" name="business">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="music">Music:</label>
+          <select id="music" name="music">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+
+        <!-- Group 5: Technical Subjects -->
+        <div class="group">
+          <div class="group-title">Technical Subjects</div>
+          <label for="building">Building and Construction:</label>
+          <select id="building" name="building">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+  
+          <label for="electronics">Electricity and Electronics:</label>
+          <select id="electronics" name="electronics">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+  
+          <label for="woodwork">Woodwork:</label>
+          <select id="woodwork" name="woodwork">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+  
+          <label for="metalwork">Metalwork:</label>
+          <select id="metalwork" name="metalwork">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+          
+          <label for="HomeScience">Home Science:</label>
+          <select id="HomeScience" name="HomeScience">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="French">French:</label>
+          <select id="French" name="French">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+          
+          <label for="Germany">German:</label>
+          <select id="Germany" name="Germany">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+
+          <label for="Aviation">Aviation:</label>
+          <select id="Aviation" name="Aviation">
+            <option value="">Select Grade</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="D-">D-</option>
+            <option value="E">E</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Counties Selection -->
+    <div id="counties-section" class="form-group">
+      <h3>Select Preferred Counties</h3>
+      <div class="counties-grid">
+        <div class="county-item">
+          <input type="checkbox" id="county-baringo" name="counties" value="Baringo">
+          <label for="county-baringo">Baringo</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-bomet" name="counties" value="Bomet">
+          <label for="county-bomet">Bomet</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-bungoma" name="counties" value="Bungoma">
+          <label for="county-bungoma">Bungoma</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-busia" name="counties" value="Busia">
+          <label for="county-busia">Busia</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-elgeyo-marakwet" name="counties" value="Elgeyo-Marakwet">
+          <label for="county-elgeyo-marakwet">Elgeyo-Marakwet</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-embu" name="counties" value="Embu">
+          <label for="county-embu">Embu</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-garissa" name="counties" value="Garissa">
+          <label for="county-garissa">Garissa</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-homa-bay" name="counties" value="Homa Bay">
+          <label for="county-homa-bay">Homa Bay</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-isiolo" name="counties" value="Isiolo">
+          <label for="county-isiolo">Isiolo</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-kajiado" name="counties" value="Kajiado">
+          <label for="county-kajiado">Kajiado</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-kakamega" name="counties" value="Kakamega">
+          <label for="county-kakamega">Kakamega</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-kericho" name="counties" value="Kericho">
+          <label for="county-kericho">Kericho</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-kiambu" name="counties" value="Kiambu">
+          <label for="county-kiambu">Kiambu</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-kilifi" name="counties" value="Kilifi">
+          <label for="county-kilifi">Kilifi</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-kirinyaga" name="counties" value="Kirinyaga">
+          <label for="county-kirinyaga">Kirinyaga</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-kisii" name="counties" value="Kisii">
+          <label for="county-kisii">Kisii</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-kisumu" name="counties" value="Kisumu">
+          <label for="county-kisumu">Kisumu</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-kitui" name="counties" value="Kitui">
+          <label for="county-kitui">Kitui</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-kwale" name="counties" value="Kwale">
+          <label for="county-kwale">Kwale</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-laikipia" name="counties" value="Laikipia">
+          <label for="county-laikipia">Laikipia</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-lamu" name="counties" value="Lamu">
+          <label for="county-lamu">Lamu</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-machakos" name="counties" value="Machakos">
+          <label for="county-machakos">Machakos</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-makueni" name="counties" value="Makueni">
+          <label for="county-makueni">Makueni</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-mandera" name="counties" value="Mandera">
+          <label for="county-mandera">Mandera</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-marsabit" name="counties" value="Marsabit">
+          <label for="county-marsabit">Marsabit</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-meru" name="counties" value="Meru">
+          <label for="county-meru">Meru</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-migori" name="counties" value="Migori">
+          <label for="county-migori">Migori</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-mombasa" name="counties" value="Mombasa">
+          <label for="county-mombasa">Mombasa</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-muranga" name="counties" value="Murang'a">
+          <label for="county-muranga">Murang'a</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-nairobi" name="counties" value="Nairobi">
+          <label for="county-nairobi">Nairobi</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-nakuru" name="counties" value="Nakuru">
+          <label for="county-nakuru">Nakuru</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-nandi" name="counties" value="Nandi">
+          <label for="county-nandi">Nandi</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-narok" name="counties" value="Narok">
+          <label for="county-narok">Narok</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-nyamira" name="counties" value="Nyamira">
+          <label for="county-nyamira">Nyamira</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-nyandarua" name="counties" value="Nyandarua">
+          <label for="county-nyandarua">Nyandarua</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-nyeri" name="counties" value="Nyeri">
+          <label for="county-nyeri">Nyeri</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-samburu" name="counties" value="Samburu">
+          <label for="county-samburu">Samburu</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-siaya" name="counties" value="Siaya">
+          <label for="county-siaya">Siaya</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-taita-taveta" name="counties" value="Taita-Taveta">
+          <label for="county-taita-taveta">Taita-Taveta</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-tana-river" name="counties" value="Tana River">
+          <label for="county-tana-river">Tana River</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-tharaka-nithi" name="counties" value="Tharaka-Nithi">
+          <label for="county-tharaka-nithi">Tharaka-Nithi</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-trans-nzoia" name="counties" value="Trans Nzoia">
+          <label for="county-trans-nzoia">Trans Nzoia</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-turkana" name="counties" value="Turkana">
+          <label for="county-turkana">Turkana</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-uasin-gishu" name="counties" value="Uasin Gishu">
+          <label for="county-uasin-gishu">Uasin Gishu</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-vihiga" name="counties" value="Vihiga">
+          <label for="county-vihiga">Vihiga</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-wajir" name="counties" value="Wajir">
+          <label for="county-wajir">Wajir</label>
+        </div>
+        <div class="county-item">
+          <input type="checkbox" id="county-west-pokot" name="counties" value="West Pokot">
+          <label for="county-west-pokot">West Pokot</label>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" onclick="proceedToPayment()">Proceed to Payment</button>
+  </form>
+
+  <script>
+    window.proceedToPayment = function () {
+      try {
+        // Define subjects with expected server keys
+        const subjects = [
+          { id: 'english', name: 'English' },
+          { id: 'kiswahili', name: 'Kiswahili' },
+          { id: 'mathematics', name: 'Mathematics' },
+          { id: 'biology', name: 'Biology' },
+          { id: 'chemistry', name: 'Chemistry' },
+          { id: 'physics', name: 'Physics' },
+          { id: 'geography', name: 'Geography' },
+          { id: 'history', name: 'History' },
+          { id: 'cre', name: 'CRE' },
+          { id: 'ire', name: 'IRE' },
+          { id: 'hre', name: 'HRE' },
+          { id: 'agriculture', name: 'Agriculture' },
+          { id: 'computer', name: 'Computer' },
+          { id: 'art', name: 'Art' },
+          { id: 'business', name: 'Business Studies' }, // Updated to match sample
+          { id: 'music', name: 'Music' },
+          { id: 'building', name: 'Building' },
+          { id: 'electronics', name: 'Electronics' },
+          { id: 'woodwork', name: 'Woodwork' },
+          { id: 'metalwork', name: 'Metalwork' },
+          { id: 'HomeScience', name: 'Home Science' },
+          { id: 'French', name: 'French' },
+          { id: 'Germany', name: 'German' },
+          { id: 'Aviation', name: 'Aviation' }
+        ];
+
+        // Collect mean grade
+        const meanGrade = document.getElementById('Meangrade')?.value.trim().toUpperCase();
+        if (!meanGrade) {
+          alert("Please select your mean grade.");
+          return;
+        }
+
+        // Collect user grades
+        const userGrades = {};
+        subjects.forEach(subject => {
+          const grade = document.getElementById(subject.id)?.value.trim().toUpperCase();
+          if (grade) {
+            userGrades[subject.name] = grade;
+          }
+        });
+
+        // Validate the number of subjects (7 to 9 subjects)
+        const selectedSubjectsCount = Object.keys(userGrades).length;
+        if (selectedSubjectsCount < 7 || selectedSubjectsCount > 9) {
+          console.error(`Error: Selected ${selectedSubjectsCount} subjects. Must be between 7 and 9.`);
+          alert("Please select grades for 7 to 9 subjects.");
+          return;
+        }
+
+        // Collect selected counties
+        const selectedCounties = [];
+        document.querySelectorAll('input[name="counties"]:checked').forEach(checkbox => {
+          selectedCounties.push(checkbox.value);
+        });
+
+        // Validate the number of selected counties (at least 2)
+        if (selectedCounties.length < 2) {
+          console.error(`Error: Selected ${selectedCounties.length} counties. Need at least 2.`);
+          alert("Please select at least 2 counties.");
+          return;
+        }
+
+        // Prepare data matching the sample structure
+        const userData = {
+          courseType: 'diploma',
+          grades: userGrades,
+          meanGrade: meanGrade,
+          selectedCounties: selectedCounties
+        };
+
+        // Log and save to localStorage with unique key
+        console.log("Formatted user data:", JSON.stringify(userData, null, 2));
+        localStorage.setItem("diplomaData", JSON.stringify(userData));
+        // Save the courseType separately
+        localStorage.setItem('courseType', userData.courseType);
+        console.log("User data stored successfully:", userData);
+        console.log("Course type stored in localStorage:", userData.courseType);
+
+        alert("Validation successful! Redirecting to payment...");
+        window.location.href = "paystack.html";
+      } catch (error) {
+        console.error("Error in proceedToPayment:", error);
+        alert("An unexpected error occurred while processing your data.");
+      }
+    };
+</script>
+
+<footer style="text-align: center; padding: 7px; background-color: #1a1a1a; color: #fff; font-size: 14px;">
+    <p>Copyright © 2025 All rights reserved.</p>
+    <p>Designed by ENG. NEGRO</p>
+</footer>
+</body>
+</html>

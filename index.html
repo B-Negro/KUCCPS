@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Course Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+                  url('/image/brooke-cagle-g1Kr4Ozfoac-unsplash.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu {
+      background-color: #756a6a;
+      color: rgb(228, 217, 217);
+      padding: 10px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 150px;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .hamburger {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .bar {
+      width: 30px;
+      height: 4px;
+      background: rgb(221, 61, 61);
+      transition: 0.3s;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+    }
+
+    .nav-links a {
+      color: rgba(8, 7, 7, 0.918);
+      text-decoration: none;
+      padding: 10px;
+      margin: 5px 0;
+      display: block;
+    }
+
+    .nav-links a:hover {
+      background-color: #0e2c72;
+    }
+
+    .nav-active {
+      display: flex !important;
+    }
+
+    .main-content {
+      margin-left: 30px;
+      padding: 45px;
+      text-align: center;
+      flex-grow: 19;
+      color: #cdf80b;
+      
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      color: rgb(0, 0, 1);
+      padding: 10px 20px;
+      margin: 10px;
+      width: 200px;
+      text-align: center;
+      border-radius: 10px;
+    }
+    .buttons a:hover {
+      background-color: #dadde4;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 0px;
+      background-color: #756a6a;
+      width: 100%;
+    }
+
+    .degree { background-color: #e4179f; }
+    .diploma { background-color: #007bff; }
+    .certificate { background-color: #1ed41e; }
+    .artisan { background-color: #2a10a1; }
+    .kmtc { background-color: #77276c; }
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <h2>Menu</h2>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="nav-links" id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="#">KUCCPS Portal Link</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Email Us</a>
+      <a href="#">About Us</a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <h1>The Course Checker</h1>
+    <p>Your Gateway to University Success!</p>
+    <div class="buttons">
+      <a href="degree.html" class="degree">Degree</a>
+      <a href="diploma.html" class="diploma">Diploma</a>
+      <a href="certificate.html" class="certificate">Certificate</a>
+      <a href="artisan.html" class="artisan">Artisan</a>
+      <a href="kmtc.html" class="kmtc">KMTC</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Copyright © 2025 All rights reserved.</p>
+    <p>Designed by ENG. Biggie</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navMenu");
+      nav.classList.toggle("nav-active");
+    }
+  </script>
+</body>
+</html>

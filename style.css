@@ -1,0 +1,158 @@
+ <style>
+    /* Body with dark to gold gradient background and light grey text */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: linear-gradient(135deg, #1a1a1a, #bfa76f);
+      background-size: cover;
+      color: #d3d3d3;
+    }
+
+    /* Form container: dark background with soft purple border and subtle glow */
+    form {
+      max-width: 800px; /* Increased width to accommodate counties */
+      margin: auto;
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      border: 2px solid #b39ddb; /* Soft purple border */
+      box-shadow: 0 2px 6px rgba(179, 157, 219, 0.5); /* Soft purple glow */
+    }
+
+    /* Form group spacing */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    /* Label styling: light grey text */
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #d3d3d3;
+    }
+
+    /* Input fields and selects: dark background with soft purple border, light text */
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      background-color: #333;
+      color: #d3d3d3;
+      border: 1px solid #b39ddb; /* Soft purple border */
+      border-radius: 4px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="email"]:focus,
+    select:focus {
+      border-color: #b39ddb;
+      box-shadow: 0 0 8px rgba(179, 157, 219, 0.6);
+      outline: none;
+    }
+
+    /* Checkbox styling */
+    input[type="checkbox"] {
+      margin-right: 5px;
+      accent-color: #00ffcc; /* Neon teal for checkbox */
+    }
+
+    /* Counties grid */
+    .counties-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      padding: 10px;
+      border: 2px solid #b39ddb;
+      border-radius: 8px;
+      background-color: #222;
+    }
+
+    .county-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .county-item label {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    /* Button styling: neon teal background with glowing hover effect */
+    button {
+      background-color: #00ffcc; /* Neon teal */
+      color: #000;
+      border: none;
+      cursor: pointer;
+      padding: 12px;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
+      text-shadow: 0 0 10px #00ffcc;
+    }
+
+    /* Note styling: small light grey text */
+    .note {
+      font-size: 12px;
+      color: #d3d3d3;
+    }
+
+    /* Group title styling */
+    .group-title {
+      font-weight: bold;
+      margin-top: 10px;
+      text-decoration: underline;
+      color: #d3d3d3;
+    }
+
+    /* Neon glow animation for grade and cutoff sections */
+    @keyframes neonGlow {
+      0% {
+        box-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+      }
+      50% {
+        box-shadow: 0 0 15px #00ffcc, 0 0 25px #00ffcc;
+      }
+      100% {
+        box-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+      }
+    }
+
+    /* Apply neon glow animation and soft purple border to grade and counties sections */
+    #grade-inputs, #counties-section {
+      border: 2px solid #b39ddb; /* Soft purple border */
+      padding: 10px;
+      border-radius: 8px;
+      animation: neonGlow 2s infinite alternate;
+    }
+
+    /* Glowing effect on counties section labels on hover */
+    #counties-section label:hover {
+      text-shadow: 0 0 5px #00ffcc;
+    }
+
+    /* Additional styling for course cards (useful for results.html) */
+    .course-card {
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 10px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .course-card:hover {
+      transform: translateY(-3px);
+    }
+  </style>

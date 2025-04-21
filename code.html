@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KUCCPS Course Checker</title>
+    <meta name="description" content="Find the perfect course based on your KCSE grades and cluster points">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>KUCCPS Course Checker</h1>
+            <p>Find the perfect course based on your KCSE grades and cluster points.</p>
+        </header>
+        <main>
+            <form id="course-form">
+                <label for="kcse-grade">Enter your KCSE grade:</label>
+                <input type="text" id="kcse-grade" name="kcse-grade" required>
+                <label for="cluster-points">Enter your cluster points:</label>
+                <input type="number" id="cluster-points" name="cluster-points" required>
+                <button type="submit">Check Courses</button>
+            </form>
+            <div id="results"></div>
+        </main>
+    </div>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
